@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 //  Cada item abaixo deverá ser criado numa página separada dentro da pasta "pages"
 const exercises = [
   {
@@ -37,9 +39,20 @@ const exercises = [
   }
 ];
 
+// Renderizar cada exercício como um card ( com link ) para a página na qual vocês irão desenvolver
+// Sugestão de card 
+// p-8 flex rounded-md border border-zinc-300
+
 export default function Home() {
 
   return (
-    <></>
+    <>
+      {exercises.map(exercicio => {
+
+        return(
+          <Link href={'exercicio-1'}><p>{exercicio.title}</p></Link>
+        )
+      })}
+    </>
   );
 }
