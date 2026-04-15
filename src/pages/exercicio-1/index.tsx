@@ -1,4 +1,4 @@
-// Exercício 1: "Estado + Estilização (dark/light mode)"
+// Exercício 1: "Theme Toggle: Estado + Estilização (dark/light mode)"
 
 import { useState } from "react"
 
