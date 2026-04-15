@@ -58,19 +58,21 @@ export default function Ex02() {
                     <button className="text-[1rem] flex gap-15 border border-slate-300 w-fit rounded-lg px-5 py-1 cursor-pointer" onClick={() => saveCounter(counter)}>Salvar Contador</button>
                     <div className="relative border border-slate-400 rounded-xl p-5 w-full m-3">
                         <h1 className="absolute -top-3 px-10 bg-[#0a0a0a] text-sky-500 left-[50%] -translate-x-[50%]">Histórico</h1>
-                        {
-                            counterHistory.length > 0 ? (
-                                counterHistory.map((history) => {
-                                    return (
-                                        <div key={history.id}>
-                                            <p>{formatDate(history.id) + ": " + history.counter}</p>
-                                        </div>
-                                    )
-                                })
-                            ) : ( 
-                                <p>Nenhum histórico salvo</p>
-                            )
-                        }
+                        <ul className="list-disc pl-5">
+                            {
+                                counterHistory.length > 0 ? (
+                                    counterHistory.map((history) => {
+                                        return (
+                                            <li key={history.id}>
+                                                <p>{formatDate(history.id) + ": " + history.counter}</p>
+                                            </li>
+                                        )
+                                    })
+                                ) : ( 
+                                    <p>Nenhum histórico salvo</p>
+                                )
+                            }
+                        </ul>
                     </div>
                 </div>
             </div>
