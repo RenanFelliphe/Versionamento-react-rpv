@@ -1,68 +1,28 @@
-interface ICatalogoAnimes {
-    id: string,
-    catalogo: IAnime[]
-}
+import { useEffect, useState } from "react"
 
-interface IAnime {
-    id: string,
-    nome: string,
-}
-
-const catalogoAnimes: ICatalogoAnimes = {
-    id: crypto.randomUUID(),
-    catalogo: [
-        {
-            id: "1",
-            nome: "Dragon Ball"
-        },
-        {
-            id: "2",
-            nome: "Naruto"
-        },
-        {
-            id: "3",
-            nome: "One Piece"
-        },
-        {
-            id: "4",
-            nome: "Bleach"
-        },
-        {
-            id: "5",
-            nome: "Kimetsu no Yaiba"
-        },
-        {
-            id: "6",
-            nome: "Boku no Hero"
-        },
-        {
-            id: "7",
-            nome: "Black Clover"
-        },
-        {
-            id: "8",
-            nome: "Saint Seiya"
-        },
-        {
-            id: "9",
-            nome: "Hunter x Hunter"
-        },
-        {
-            id: "10",
-            nome: "Shingeki no Kyojin"
-        },
-        {
-            id: "11",
-            nome: "Jujutsu Kaisen"
-        },
-        {
-            id: "12",
-            nome: "Death Note"
-        }
-    ]
+interface IUser {
+    userId: number,
+    id: number,
+    title: string,
+    completed: string
 }
 
 export default function Ex06() {
+
+    const [users, setUser] = useState<any[]>([])
+    const [numUser, setNumUser] = useState<number>(2)
+
+    useEffect(() => {
+        async function renderizaUsuarios() {
+            const response = await fetch('https://jsonplaceholder.typicode.com/todos')
+            const data = await response.json()
+
+            setUser(data.filter((user:IUser) => user.id <= 9))
+        }
+
+        renderizaUsuarios()
+    })
+
 
     return(
         <>
@@ -77,15 +37,19 @@ export default function Ex06() {
 
                     <input type="search" className="border border-slate-400 rounded-xl py-1 px-5 w-full py-2 px-5" placeholder="Pesquisar anime..."/>
 
-                    <div className="grid grid-cols-6 gap-5">
+                    <div className="grid grid-cols-6 gap-5 pl-2">
                         {
-                            catalogoAnimes.catalogo.map(element => {
+                            users.length ? (users.map((user) => {
                                 return (
-                                    <span className="col-span-2 border border-slate-400 rounded-xl py-2 px-10 cursor-pointer hover:shadow-md shadow-gray-500">{element.nome}</span>
+                                    <div key={user.id} className="col-span-2 border border-slate-400 rounded-xl py-2 px-10 cursor-pointer hover:shadow-md shadow-gray-500">
+                                        <p>Usuário: {user.id} - {user.title}</p>
+                                    </div>
                                 )
-                            })
+                                })) : (
+                                    <p>Nenhum usuário registrado</p>
+                                )
                         }
-                    </div>
+                    </div>  
                 </div>
             </div>
         </>
