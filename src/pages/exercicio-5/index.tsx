@@ -22,15 +22,15 @@ export default function Ex05() {
         }
 
         renderizaUsuarios()
-    })
+    }, [numUser])
 
     return(
 
         <>
             <div className="w-full h-screen flex flex-col items-center gap-5 mt-10">
                 <span className="text-[2rem]">Exercícios <span className="text-sky-500 font-bold"> 5</span></span>
-                <div className="relative w-200 h-100 border rounded-xl border-slate-400 p-10 bg-white gap-5">
-                    <p className="text-small">(Buscando usuários com o ID maior do que <span className="text-sky-500">{numUser!}</span>)</p>
+                <div className="relative w-200 h-fit border rounded-xl border-slate-400 p-10 flex flex-col gap-2">
+                    <p className="text-small">(Buscando usuários com o ID maior do que <span className={`${ numUser >= 0 ? "text-sky-500" : "text-red-500" }`}>{numUser!}</span>)</p>
 
                     <div className="flex gap-5">
                         <button className="border border-slate-400 rounded-xl py-1 px-5 cursor-pointer" onClick={() => setNumUser(numUser + 1)}>Aumentar ID</button>
@@ -38,12 +38,12 @@ export default function Ex05() {
                     </div>
 
                     <h1 className="text-[2rem]">Usuários Cadastrados</h1>
-                    <ul className="list-disc pl-2">
+                    <ul className="list-disc pl-2 h-fit">
                         {
                             users.length ? 
                             (users.map((user) => {
                                 return (
-                                    <li key={user.id} className="border-b border-b-slate-400 rounded-xl py-1 px-5">
+                                    <li key={user.id} className="border-b border-b-slate-400 py-3 px-5">
                                         <p>Usuário: {user.id} - {user.title}</p>
                                     </li>
                                 )
