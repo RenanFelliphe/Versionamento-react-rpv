@@ -56,7 +56,7 @@ export default function Home() {
               {exercises.map(exercicio => {
                 return(
                   <div className={`${exercicio.id == 7 ? "col-span-3" : "col-span-1"} border border-zinc-400 bg-slate-200/20 rounded-xl flex items-center justify-center hover:bg-sky-400/70 hover:transition-colors duration-100 hover:shadow-lg shadow-sky-900`}>
-                    <Link href={`exercicio-${exercicio.id}`} className="text-center px-5 py-10"><p>{exercicio.title}</p></Link>
+                    <Link href={`exercicio-${exercicio.id}`} className="text-center px-5 py-10 w-full"><p>{exercicio.title}</p></Link>
                   </div>
                 )
               })}

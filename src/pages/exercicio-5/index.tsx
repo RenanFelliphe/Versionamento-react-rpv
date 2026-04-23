@@ -27,7 +27,7 @@ export default function Ex05() {
     return(
 
         <>
-            <div className="w-full h-screen flex flex-col items-center gap-5 mt-10">
+            <div className="w-full h-screen flex flex-col items-center gap-5 mt-50">
                 <span className="text-[2rem]">Exercícios <span className="text-sky-500 font-bold"> 5</span></span>
                 <div className="relative w-200 h-fit border rounded-xl border-slate-400 p-10 flex flex-col gap-2">
                     <p className="text-small">(Buscando usuários com o ID maior do que <span className={`${ numUser >= 0 ? "text-sky-500" : "text-red-500" }`}>{numUser!}</span>)</p>
